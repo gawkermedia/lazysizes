@@ -429,6 +429,10 @@
 
 						addClass(elem, lazySizesConfig.loadingClass);
 						addRemoveLoadEvents(elem, rafSwitchLoadingClass, true);
+
+						if (lazySizesConfig.afterLoadEvent) {
+							triggerEvent(e.target, 'imageLazyLoaded');
+						}
 					}
 
 					if(isPicture){
@@ -663,7 +667,8 @@
 			init: true,
 			expFactor: 1.7,
 			hFac: 0.8,
-			loadMode: 2
+			loadMode: 2,
+			afterLoadEvent: false
 		};
 
 		lazySizesConfig = window.lazySizesConfig || window.lazysizesConfig || {};
